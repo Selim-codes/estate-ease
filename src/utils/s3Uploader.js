@@ -1,6 +1,34 @@
-import aws from 'aws-sdk'
-import {v4 as uuid} from 'uuid';
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+const dotenv = require("dotenv");
+dotenv.config();
 
-const s3 = new AWS.S3({region: process.env.AWS_REGION})
+const bucket = process.env.AWS_BUCKET_NAME;
+const cloudfrontUrl = process.env.AWS_CLOUDFRONT_URL;
 
-const
+const s3 = new S3Client({
+    region: process.env.AWS_REGION,
+});
+
+async function uploadToS3(file) {
+    if (process.env.NODE_ENV !== 'production') {
+        console.warn("⚠️ Skipping uploadToS3 in Development Mode.");
+        return null;
+    }
+
+    const key = `uploads/${Date.now()}-${file.originalname}`;
+
+    const params = {
+        Bucket: bucket,
+        Key: key,
+        Body: file.buffer,
+        ContentType: file.mimetype,
+        ACL: 'public-read',
+    };
+
+    const command = new PutObjectCommand(params);
+    await s3.send(command);
+
+    return `https://${cloudfrontUrl}/${bucket}/${filename}`;
+}
+
+module.exports = { uploadToS3 };

@@ -1,23 +1,23 @@
+
 const express = require('express');
 const app = express();
 const port = process.env.SERVER_PORT || 3000;
-const pool = require('./db/config'); // Adjust the path as needed
+const sequelize = require('./db/config');
+require('dotenv').config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// Connect to DB and start server
 (async () => {
     try {
-        const client = await pool.connect();
-        await client.query(); // simple test query
-        client.release();
+        await sequelize.authenticate();
+        console.log('✅ Database connected successfully');
 
-        console.log('✅ Database connected successfully.');
+        await sequelize.sync();
 
         app.listen(port, () => {
-            console.log(`🛰️ Server listening on port ${port}`);
+            console.log(`🛰️ Server is running on port ${port}`);
         });
     } catch (err) {
         console.error('❌ Error connecting to the database:', err);
