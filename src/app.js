@@ -4,10 +4,13 @@ const app = express();
 const port = process.env.SERVER_PORT || 3000;
 const sequelize = require('./db/config');
 require('dotenv').config();
+const propertyRoutes = require('./routes/propertiesRoutes');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+
+app.use('/api', propertyRoutes);
 
 (async () => {
     try {

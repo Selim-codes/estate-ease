@@ -4,8 +4,9 @@ require('dotenv').config();
 let sequelize;
 
 if (process.env.ENV === 'development') {
-    console.log('USING DATABASE DEVELOPMENT CONFIG 🛟');
-    console.log('DATABASE RUNNING CONFIG SETTING ☭ ');
+    console.log('📡 USING DATABASE DEVELOPMENT CONFIG ');
+    console.log('-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-')
+    console.log('🤫 DATABASE RUNNING CONFIG SETTING ☭ ');
 
     sequelize = new Sequelize(
         process.env.DB_NAME,
@@ -19,7 +20,9 @@ if (process.env.ENV === 'development') {
         }
     );
 } else if (process.env.ENV === 'production') {
-    console.log('USING DATABASE PRODUCTION CONFIG');
+    console.log('🔮USING DATABASE PRODUCTION CONFIG');
+    console.log('-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-')
+    console.log('👨🏽‍🦯‍➡️ DATABASE RUNNING CONFIG SETTING ☭ ');
 
     sequelize = new Sequelize(
         process.env.RDS_NAME,

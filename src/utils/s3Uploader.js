@@ -28,7 +28,6 @@ async function uploadToS3(file) {
     const command = new PutObjectCommand(params);
     await s3.send(command);
 
-    return `https://${cloudfrontUrl}/${bucket}/${filename}`;
+    // 🔥 Use `key` here, not undefined `filename`
+    return `https://${cloudfrontUrl}/${key}`;
 }
-
-module.exports = { uploadToS3 };

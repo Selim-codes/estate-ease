@@ -1,0 +1,22 @@
+DB_PASSWORD=xxxxxxxx
+DB_HOST=xxxxxxxx
+DB_NAME=xxxxxxxx
+DB_USER=xxxxxxxx
+DB_PORT=xxxxxxxx
+DATABASE_TIMEOUT_INTERVAL=xxxxxxxx
+
+ENV=development
+
+RDS_USER=your_username
+RDS_PASSWORD=your_password
+RDS_HOST=localhost
+RDS_NAME=your_db_name
+RDS_PORT=5432
+
+SERVER_PORT=5000
+
+SERECT_KEY= xxxxxxxx
+AWS_CLOUDFRONT_URL = xxxxxxx
+
+s3PictureLocation=xxxxxxxx
+s3Logs=xxxxxxxx
