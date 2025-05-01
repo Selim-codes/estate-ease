@@ -5,6 +5,7 @@ const port = process.env.SERVER_PORT || 3000;
 const authRoutes = require('./routes/auth');
 const sequelize = require('./db/config');
 require('dotenv').config();
+const path = require('path');
 const cors = require('cors');
 const propertyRoutes = require('./routes/propertiesRoutes');
 
@@ -14,7 +15,6 @@ app.use(express.static('public'));
 
 app.use('/api', propertyRoutes);
 app.use('/api/auth', authRoutes);
-
 
 if (process.env.NODE_ENV !== 'production') {
     console.log('Development Cors Loaded 🪛')

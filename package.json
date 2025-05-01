@@ -1,0 +1,47 @@
+{
+  "name": "estate-ease",
+  "version": "1.0.0",
+  "description": "Estate Property Application ",
+  "main": "app.js",
+  "scripts": {
+    "seed": "node src/db/seedProperties.js",
+    "seed2": "node src/utils/seed.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ENV=development nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Selim-codes/estate-ease.git"
+  },
+  "keywords": [
+    "Estate",
+    "admin",
+    "listing"
+  ],
+  "author": "Selim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Selim-codes/estate-ease/issues"
+  },
+  "homepage": "https://github.com/Selim-codes/estate-ease#readme",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.799.0",
+    "@faker-js/faker": "^9.7.0",
+    "@sequelize/postgres": "^7.0.0-alpha.46",
+    "aws-sdk": "^2.1692.0",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.2",
+    "pg": "^8.15.6",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
