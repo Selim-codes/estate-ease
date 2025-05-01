@@ -9,5 +9,6 @@ const router = express.Router();
 
 router.post('/add-properties', upload.single('image'), createPropertyController);
 router.get('/get-properties', getAllProperty);
+router.
 
 module.exports = router;

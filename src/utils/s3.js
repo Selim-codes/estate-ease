@@ -4,6 +4,7 @@ dotenv.config();
 
 const bucket = process.env.AWS_BUCKET_NAME;
 const cloudfrontUrl = process.env.AWS_CLOUDFRONT_URL;
+const awsFileDir = process.env.AWS_FILE_DIR;
 
 const s3 = new S3Client({
     region: process.env.AWS_REGION,
@@ -15,7 +16,7 @@ async function uploadToS3(file) {
         return null;
     }
 
-    const key = `uploads/${Date.now()}-${file.originalname}`;
+    const key = `${awsFileDir}/${Date.now()}-${file.originalname}`;
 
     const params = {
         Bucket: bucket,
