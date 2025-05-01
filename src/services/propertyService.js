@@ -1,20 +1,22 @@
-const { uploadToS3 } = require('../utils/s3');
-const Property = require('../models/Property');
+const { Property } = require('../models');
+const { uploadToS3 } = require('../utils/s3Uploader');
 
-async function createProperty(req) {
+async function createPropertyService(file, body, user) {
     let imageUrl = null;
 
-
-    if (process.env.NODE_ENV === 'production' && req.file) {
-        imageUrl = await uploadToS3(req.file);
+    if (process.env.NODE_ENV === 'production' && file) {
+        imageUrl = await uploadToS3(file);
     }
 
     const newProperty = await Property.create({
-        ...req.body,
-        ...(imageUrl && { imageUrl }),
+        ...body,
+        ...(imageUrl && { imageurl: imageUrl }),
+        userId: user.id  // ← link property to user
     });
 
     return newProperty;
 }
 
-module.exports = { createProperty };
+module.exports = {
+    createPropertyService,
+};
