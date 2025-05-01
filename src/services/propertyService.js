@@ -11,7 +11,7 @@ async function createPropertyService(file, body, user) {
     const newProperty = await Property.create({
         ...body,
         ...(imageUrl && { imageurl: imageUrl }),
-        userId: user.id  // ← link property to user
+        userId: user.id
     });
 
     return newProperty;

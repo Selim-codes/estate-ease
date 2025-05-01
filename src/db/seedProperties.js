@@ -1,6 +1,6 @@
 const { faker } = require('@faker-js/faker');
-const pool = require('config'); // Replace with your Sequelize instance file
-const Property = require('./models/Property'); // Adjust path as needed
+const pool = require('config');
+const Property = require('./models/Property');
 
 const seedProperties = async () => {
     try {
