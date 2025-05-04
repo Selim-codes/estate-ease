@@ -74,33 +74,6 @@ export const LoginForm = () => {
     }
   };
 
-  // Demo login helpers
-  const loginAsAgent = async () => {
-    setIsLoading(true);
-    try {
-      await api.login({ email: "sarah.johnson@example.com", password: "password" });
-      toast.success("Logged in as Agent");
-      navigate("/dashboard");
-    } catch (error) {
-      toast.error("Demo login failed");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const loginAsAdmin = async () => {
-    setIsLoading(true);
-    try {
-      await api.login({ email: "admin@example.com", password: "password" });
-      toast.success("Logged in as Admin");
-      navigate("/admin");
-    } catch (error) {
-      toast.error("Demo login failed");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="space-y-2">
@@ -142,32 +115,6 @@ export const LoginForm = () => {
       >
         {isLoading ? "Logging in..." : "Log In"}
       </Button>
-
-      <div className="mt-8">
-        <p className="text-sm text-center text-gray-600 mb-3">
-          For demo purposes:
-        </p>
-        <div className="grid grid-cols-2 gap-2">
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onClick={loginAsAgent}
-            disabled={isLoading}
-          >
-            Login as Agent
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onClick={loginAsAdmin}
-            disabled={isLoading}
-          >
-            Login as Admin
-          </Button>
-        </div>
-      </div>
     </form>
   );
 };
