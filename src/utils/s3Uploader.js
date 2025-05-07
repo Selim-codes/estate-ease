@@ -10,7 +10,7 @@ const s3 = new S3Client({
     region: process.env.AWS_REGION,
 });
 
-function sanitize(str) {s
+function sanitize(str) {
     return str.toLowerCase().replace(/[^a-z0-9.-]/g, '-');
 }
 

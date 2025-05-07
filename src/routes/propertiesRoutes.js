@@ -8,6 +8,7 @@ const {
     createPropertyController,
     getAllProperty,
     deletePropertyById,
+    filterProperty,
     updatePropertyById,
     getPropertybyid
 } = require("../controllers/propertyController");
@@ -27,6 +28,9 @@ router.get('/get-properties', getAllProperty);
 
 // Get property by ID
 router.get('/get-properties/:id', getPropertybyid);
+
+//Get property by Filter
+router.get('/filter',filterProperty)
 
 // Update property by ID
 router.put(

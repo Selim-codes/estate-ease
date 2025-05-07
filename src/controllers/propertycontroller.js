@@ -1,5 +1,5 @@
 const db = require('../db/config');
-const {Property} = require("../models");
+const {Property, User} = require("../models");
 const propertyController = db.Property;
 const uploadpics = require('../utils/s3Uploader')
 require('dotenv').config();
@@ -89,6 +89,36 @@ async function deletePropertyById(req, res) {
     }
 }
 
+async function filterProperty(req, res) {
+    const {type,minPrice,maxPrice,minBeds,minBaths} = req.params;
+
+    const where = {}
+    if (type) where.type = type;
+    if (minPrice) where.minPrice = minPrice;
+    if (maxPrice) where.maxPrice = maxPrice;
+    if (minBeds) where.minBeds = minBeds;
+
+    try{
+        const property = await Property.findAll({where});
+        res.json(property);
+    }catch(err){
+        res.status(500).json({ message: err.message });
+    }
+}
+
+async function getmyproperty(req, res) {
+    const user = req.userId;
+    if (!user) {
+        return res.status(404).json({message:'No properties found !!'});
+    }
+    try{
+        const property = await Property.findAll(user.id);
+        res.status(200).json(property);
+    }
+    catch(err){
+        res.status(500).json({ message: err.message });
+    }
+}
 
 
 
@@ -97,6 +127,8 @@ module.exports = { createPropertyController ,
     getAllProperty,
     deletePropertyById,
     updatePropertyById ,
+    filterProperty,
+    getmyproperty,
     getPropertybyid};
 
 

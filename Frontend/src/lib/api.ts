@@ -8,7 +8,7 @@ import {
 } from "@/types";
 import { toast } from "sonner";
 
-const API_BASE_URL = "http://localhost:3000"; // Backend base URL
+const API_BASE_URL = "http://localhost:3000/api"; // Backend base URL
 
 // Utility function to handle API requests
 const request = async <T>(
@@ -36,14 +36,14 @@ const request = async <T>(
 export const api = {
   // Auth endpoints
   async login(credentials: LoginCredentials): Promise<User> {
-    return request<User>("/login", {
+    return request<User>("/auth/login", {
       method: "POST",
       body: JSON.stringify(credentials),
     });
   },
 
   async signup(data: SignupData): Promise<User> {
-    return request<User>("/register", {
+    return request<User>("/auth/register", {
       method: "POST",
       body: JSON.stringify(data),
     });
@@ -56,8 +56,9 @@ export const api = {
   },
 
   async getCurrentUser(): Promise<User | null> {
-    return request<User | null>("/me");
+    return request<User | null>("/auth/me");
   },
+  //jwt to get the token and user details
 
   // Properties endpoints
   async getProperties(filters?: PropertyFilter): Promise<Property[]> {

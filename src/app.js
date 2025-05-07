@@ -10,8 +10,16 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const propertyRoutes = require('./routes/propertiesRoutes');
 
+// Database Check for Sync
+
+//CORS POLICIES
+console.log("👾 Loading CORS policies for local development");
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5174',
+    credentials: true,
+}));
+
 app.use(helmet()); // Add security headers
 app.use(morgan("dev"));
 app.use(express.json());
@@ -34,24 +42,28 @@ app.use((err, req, res, next) => {
 });
 
 
-if (process.env.NODE_ENV !== 'production') {
-    console.log('Development Cors Loaded 🪛')
-    app.use(cors({
-        origin: '*',
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        credentials: true
-    }));
-} else {
-    console.log('Production Cors Loaded 🪄')
-    app.use(cors({
-        origin: process.env["EC2_INSTANCE_SERVER_IP"],
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        credentials: true
-    }));
-}
+
+
+
+// if (process.env.NODE_ENV !== 'production') {
+//     console.log('🪛 Development Cors Loaded ')
+//     app.use(cors({
+//         origin: 'http://localhost:5174',
+//         methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//         credentials: true
+//     }));
+// } else {
+//     console.log('Production Cors Loaded 🪄')
+//     app.use(cors({
+//         origin: process.env["EC2_INSTANCE_SERVER_IP"],
+//         methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//         credentials: true
+//     }));
+// }
 
 (async () => {
     try {
+        await sequelize.sync({ alter: true });
         await sequelize.authenticate();
         console.log('✅ Database connected successfully');
 
