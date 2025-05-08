@@ -61,7 +61,7 @@ export const api = {
   },
 
   async logout(): Promise<void> {
-    return request<void>("/logout", {
+    return request<void>("/auth/logout", {
       method: "POST",
     });
   },
