@@ -139,16 +139,19 @@ async function filterProperty(req, res) {
   }
 }
 
-async function getmyproperty(req, res) {
-  const user = req.userId;
-  if (!user) {
-    return res.status(404).json({ message: "No properties found !!" });
-  }
+async function getMyProperties(req, res) {
   try {
-    const property = await Property.findAll(user.id);
-    res.status(200).json(property);
+    const userId = req.user.id; // Ensure `req.user` is populated by the `protect` middleware
+    const properties = await Property.findAll({ where: { userId } });
+
+    if (!properties || properties.length === 0) {
+      return res.status(404).json({ message: "No properties found" });
+    }
+
+    res.status(200).json(properties);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    console.error("Error fetching user properties:", err);
+    res.status(500).json({ message: "Failed to fetch properties" });
   }
 }
 
@@ -158,6 +161,6 @@ module.exports = {
   deletePropertyById,
   updatePropertyById,
   filterProperty,
-  getmyproperty,
+  getMyProperties,
   getPropertybyid,
 };

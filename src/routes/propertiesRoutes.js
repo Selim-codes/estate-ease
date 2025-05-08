@@ -11,6 +11,7 @@ const {
   filterProperty,
   updatePropertyById,
   getPropertybyid,
+  getMyProperties,
 } = require("../controllers/propertyController");
 
 // Create property (with image upload)
@@ -38,6 +39,9 @@ router.get("/get-properties/:id", getPropertybyid);
 
 //Get property by Filter
 router.get("/filter", filterProperty);
+
+// Get properties by user
+router.get("/properties/my", protect, getMyProperties);
 
 // Update property by ID
 router.put(
