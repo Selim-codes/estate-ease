@@ -1,3 +1,6 @@
+const { DataTypes } = require('sequelize');
+const sequelize = require('../db/config');
+
 const Property = sequelize.define('Property', {
     id: {
         type: DataTypes.UUID,
@@ -8,14 +11,7 @@ const Property = sequelize.define('Property', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    description: {
-        type: DataTypes.TEXT
-    },
     address: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    city: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -23,39 +19,28 @@ const Property = sequelize.define('Property', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    zipCode: {
-        type: DataTypes.STRING,
-        allowNull: false
+    bedrooms:{ //TODO : set it back to false when its time for deployment for beds and baths
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    bathrooms:{
+        type: DataTypes.INTEGER,
+        allowNull: true
     },
     price: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false
     },
-    bedrooms: {
-        type: DataTypes.INTEGER
-    },
-    bathrooms: {
-        type: DataTypes.FLOAT
-    },
-    squareFeet: {
-        type: DataTypes.INTEGER
-    },
     propertyType: {
-        type: DataTypes.ENUM('apartment', 'house', 'condo', 'land', 'commercial'),
+        type: DataTypes.ENUM('apartment', 'house', 'land'),
         allowNull: false
     },
-    status: {
-        type: DataTypes.ENUM('available', 'pending', 'sold'),
-        defaultValue: 'available'
-    },
-    imageurl:{
-        type:DataTypes.STRING,
+    imageUrl: {
+        type: DataTypes.STRING,
         allowNull: true
-    },
-    featured: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
     }
+}, {
+    timestamps: true
 });
 
 module.exports = Property;
