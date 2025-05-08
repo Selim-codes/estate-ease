@@ -104,6 +104,9 @@ export const api = {
     return request<Property>("/properties", {
       method: "POST",
       body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json", // Ensure the content type is JSON
+      },
     });
   },
 
