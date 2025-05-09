@@ -17,7 +17,13 @@ exports.register = async (req, res) => {
       return res.status(400).json({ message: "Email already exists" });
     }
 
-    const user = await User.create({ name, email, password, role });
+    const user = await User.create({
+      name,
+      email,
+      password,
+      role: role || "agent", // Default to "agent" if no role is provided
+    });
+
     const token = createToken(user);
 
     return res.status(201).json({

@@ -42,6 +42,10 @@ const Property = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    featured: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false, // Default to false
+    },
   },
   {
     timestamps: true,
