@@ -55,13 +55,14 @@ exports.login = async (req, res) => {
 exports.getMe = async (req, res) => {
   try {
     const user = await User.findByPk(req.user.id, {
-      attributes: ["id", "name", "email", "role"], // Ensure 'name' is included
+      attributes: ["id", "name", "email", "role"], // Ensure required fields are included
     });
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
+    res.set("Cache-Control", "no-store"); // Disable caching
     res.status(200).json(user);
   } catch (err) {
     console.error("Error fetching user data:", err);

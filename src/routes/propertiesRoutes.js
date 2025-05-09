@@ -12,7 +12,7 @@ const {
   updatePropertyById,
   getPropertybyid,
   getMyProperties,
-} = require("../controllers/propertyController");
+} = require("../controllers/propertycontroller");
 
 // Create property (with image upload)
 router.post(
