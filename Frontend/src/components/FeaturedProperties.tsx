@@ -12,6 +12,7 @@ export const FeaturedProperties = () => {
     const fetchFeaturedProperties = async () => {
       try {
         const allProperties = await api.getProperties();
+        console.log("Fetched properties:", allProperties); // Debug log
         const featured = allProperties.filter(p => p.featured).slice(0, 3);
         setProperties(featured);
       } catch (error) {

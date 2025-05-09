@@ -1,24 +1,26 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const port = process.env.SERVER_PORT || 3000;
-const authRoutes = require('./routes/auth');
-const sequelize = require('./db/config');
-require('dotenv').config();
-const path = require('path');
-const cors = require('cors');
+const authRoutes = require("./routes/auth");
+const sequelize = require("./db/config");
+require("dotenv").config();
+const path = require("path");
+const cors = require("cors");
 const morgan = require("morgan");
 const helmet = require("helmet");
-const propertyRoutes = require('./routes/propertiesRoutes');
+const propertyRoutes = require("./routes/propertiesRoutes");
 
 // Database Check for Sync
 
 //CORS POLICIES
 console.log("👾 Loading CORS policies for local development");
 // Middleware
-app.use(cors({
-    origin: 'http://localhost:5174',
+app.use(
+  cors({
+    origin: "http://localhost:5173",
     credentials: true,
-}));
+  })
+);
 
 app.use(helmet()); // Add security headers
 app.use(morgan("dev"));
@@ -26,9 +28,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-
-app.use('/api', propertyRoutes);
-app.use('/api/auth', authRoutes);
+app.use("/api", propertyRoutes);
+app.use("/api/auth", authRoutes);
 
 // Routes
 app.get("/", (req, res) => {
@@ -40,10 +41,6 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: "Something went wrong!" });
 });
-
-
-
-
 
 // if (process.env.NODE_ENV !== 'production') {
 //     console.log('🪛 Development Cors Loaded ')
@@ -62,19 +59,18 @@ app.use((err, req, res, next) => {
 // }
 
 (async () => {
-    try {
-        await sequelize.sync({ alter: true });
-        await sequelize.authenticate();
-        console.log('✅ Database connected successfully');
+  try {
+    await sequelize.sync({ alter: true });
+    await sequelize.authenticate();
+    console.log("✅ Database connected successfully");
 
-        await sequelize.sync();
+    await sequelize.sync();
 
-        app.listen(port, () => {
-            console.log(`🛰️ Server is running on port ${port}`);
-        });
-    } catch (err) {
-        console.error('❌ Error connecting to the database:', err);
-        process.exit(1);
-    }
+    app.listen(port, () => {
+      console.log(`🛰️ Server is running on port ${port}`);
+    });
+  } catch (err) {
+    console.error("❌ Error connecting to the database:", err);
+    process.exit(1);
+  }
 })();
-

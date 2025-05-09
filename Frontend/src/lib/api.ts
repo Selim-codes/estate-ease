@@ -15,10 +15,13 @@ const request = async <T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> => {
+  const token = localStorage.getItem("token");
+
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {
     ...options,
     headers: {
       "Content-Type": "application/json",
+      Authorization: token ? `Bearer ${token}` : "", // Include the token
       ...options.headers,
     },
     credentials: "include", // Include cookies for authentication
@@ -36,10 +39,18 @@ const request = async <T>(
 export const api = {
   // Auth endpoints
   async login(credentials: LoginCredentials): Promise<User> {
-    return request<User>("/auth/login", {
-      method: "POST",
-      body: JSON.stringify(credentials),
-    });
+    const response = await request<{ token: string; user: User }>(
+      "/auth/login",
+      {
+        method: "POST",
+        body: JSON.stringify(credentials),
+      }
+    );
+
+    // Store the token in localStorage or cookies
+    localStorage.setItem("token", response.token);
+
+    return response.user;
   },
 
   async signup(data: SignupData): Promise<User> {
@@ -50,7 +61,7 @@ export const api = {
   },
 
   async logout(): Promise<void> {
-    return request<void>("/logout", {
+    return request<void>("/auth/logout", {
       method: "POST",
     });
   },
@@ -93,6 +104,9 @@ export const api = {
     return request<Property>("/properties", {
       method: "POST",
       body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json", // Ensure the content type is JSON
+      },
     });
   },
 
