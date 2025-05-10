@@ -21,8 +21,12 @@ const Property = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     bedrooms: {
-      //TODO : set it back to false when its time for deployment for beds and baths
+      //TODO : set it back to false when its time for deployment for beds and baths modify
       type: DataTypes.INTEGER,
       allowNull: true,
     },
