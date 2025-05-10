@@ -32,7 +32,7 @@ router.post(
 );
 
 // Get all properties
-router.get("/get-properties", getAllProperty);
+router.get("/properties", getAllProperty);
 
 // Get property by ID
 router.get("/get-properties/:id", getPropertybyid);
