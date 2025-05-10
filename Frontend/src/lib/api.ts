@@ -67,7 +67,11 @@ export const api = {
   },
 
   async getCurrentUser(): Promise<User | null> {
-    return request<User | null>("/auth/me");
+    return request<User | null>("/auth/me", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`, // Include the token
+      },
+    });
   },
   //jwt to get the token and user details
 

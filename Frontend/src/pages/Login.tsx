@@ -57,7 +57,7 @@ const Login = () => {
         {/* Image side */}
         <div 
           className="hidden md:block md:w-1/2 bg-cover bg-center"
-          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80")' }}
+          style={{ backgroundImage: 'url("http://d2qhoph587b7nd.cloudfront.net/house.jpeg")' }}
         >
           <div className="h-full w-full bg-black bg-opacity-20 flex items-end p-8">
             <h2 className="text-white text-2xl font-bold">Welcome back to your real estate journey</h2>

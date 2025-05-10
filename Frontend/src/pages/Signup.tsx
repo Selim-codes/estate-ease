@@ -80,7 +80,7 @@ const Signup = () => {
         {/* Image side */}
         <div 
           className="hidden md:block md:w-1/2 bg-cover bg-center"
-          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1518005020951-eccb494ad742?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80")' }}
+          style={{ backgroundImage: 'url("http://d2qhoph587b7nd.cloudfront.net/curve.jpeg")' }}
         >
           <div className="h-full w-full bg-black bg-opacity-20 flex items-end p-8">
             <h2 className="text-white text-2xl font-bold">Start your journey to finding the perfect property</h2>
