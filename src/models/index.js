@@ -1,6 +1,6 @@
 const sequelize = require('../db/config');
 const User = require('./User');
-const Property = require('./Property');
+const Property = require('./property');
 
 
 User.hasMany(Property, { as: 'properties', foreignKey: 'userId' });

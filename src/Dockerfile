@@ -1,4 +1,12 @@
-FROM ubuntu:latest
-LABEL authors="victorjohnson"
+FROM node:18
 
-ENTRYPOINT ["top", "-b"]
+WORKDIR /src
+
+COPY package.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 5000
+
+CMD ["node", "app.js"]

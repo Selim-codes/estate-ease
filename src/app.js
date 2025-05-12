@@ -9,17 +9,18 @@ const cors = require("cors");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const propertyRoutes = require("./routes/propertiesRoutes");
-
+const allowedOrigins = process.env.ALLOWED_ORIGIN_1 || "http://localhost:5173"
 // Database Check for Sync
 
+
 //CORS POLICIES
-console.log("👾 Loading CORS policies for local development");
+console.log("👾 Loading CORS policies for Development ");
 // Middleware
 app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
+    cors({
+      origin: allowedOrigins,
+      credentials: true,
+    })
 );
 
 app.use(helmet()); // Add security headers
