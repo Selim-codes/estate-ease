@@ -12,7 +12,7 @@ const Index = () => {
       <div 
         className="flex-grow flex flex-col items-center justify-center bg-cover bg-center text-white py-32"
         style={{ 
-          backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://d2qhoph587b7nd.cloudfront.net/river.jpeg")',
+          backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://group55-s3bucket.s3-website-us-east-1.amazonaws.com/river.jpeg")',
           minHeight: '80vh'
         }}
       >

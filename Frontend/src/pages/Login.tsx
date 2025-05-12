@@ -57,7 +57,7 @@ const Login = () => {
         {/* Image side */}
         <div 
           className="hidden md:block md:w-1/2 bg-cover bg-center"
-          style={{ backgroundImage: 'url("http://d2qhoph587b7nd.cloudfront.net/house.jpeg")' }}
+          style={{ backgroundImage: 'url("http://group55-s3bucket.s3-website-us-east-1.amazonaws.com/house.jpeg")' }}
         >
           <div className="h-full w-full bg-black bg-opacity-20 flex items-end p-8">
             <h2 className="text-white text-2xl font-bold">Welcome back to your real estate journey</h2>
