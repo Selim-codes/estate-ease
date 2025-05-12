@@ -43,22 +43,6 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went wrong!" });
 });
 
-// if (process.env.NODE_ENV !== 'production') {
-//     console.log('🪛 Development Cors Loaded ')
-//     app.use(cors({
-//         origin: 'http://localhost:5174',
-//         methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//         credentials: true
-//     }));
-// } else {
-//     console.log('Production Cors Loaded 🪄')
-//     app.use(cors({
-//         origin: process.env["EC2_INSTANCE_SERVER_IP"],
-//         methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//         credentials: true
-//     }));
-// }
-
 (async () => {
   try {
     await sequelize.sync({ alter: true });
