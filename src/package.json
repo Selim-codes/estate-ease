@@ -4,10 +4,10 @@
   "description": "Estate Property Application ",
   "main": "app.js",
   "scripts": {
-    "seed": "node src/db/seedProperties.js",
-    "seed2": "node src/utils/seed.js",
+    "seed": "node db/seedProperties.js",
+    "seed2": "node utils/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ENV=development nodemon src/app.js"
+    "dev": "ENV=development nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.2",

@@ -1,7 +1,7 @@
 const { User } = require('../models');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-
+const checkToken = require('../../middleware/checkToken');
 
 const generateToken = (user) => {
     return jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, {
@@ -39,16 +39,9 @@ exports.loginUser = async (req, res) => {
 
         const token = generateToken(user);
         res.json({ user, token });
+        res.json({"message": "User logged in 🪵"});
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 };
 
-exports.getMe = async (req, res) => {
-    try {
-        const user = await User.findByPk(req.user.id);
-        res.json(user);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-};

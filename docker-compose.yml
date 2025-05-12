@@ -1,0 +1,17 @@
+services:
+  backend:
+    container_name: estate-app-backend
+    build: ./src
+    env_file: .env
+    ports:
+      - "5000:5000"
+    depends_on:
+      - frontend
+
+  frontend:
+    container_name: estate-app-frontend
+    build: ./Frontend
+    ports:
+      - "3000:80"
+    env_file: .env
+    restart: always

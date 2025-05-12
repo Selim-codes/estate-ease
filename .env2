@@ -1,0 +1,20 @@
+NODE_ENV=development
+RDS_HOST= group55estate.cluster-cdwgqsuey4fw.us-east-1.rds.amazonaws.com
+RDS_USER= admin
+RDS_PASSWORD=4r7z9X1q
+RDS_NAME=group55estate
+RDS_PORT=3306
+
+
+FRONTEND_URL=http://localhost:3000
+VITE_BACKEND_URL=http://localhost:5000
+
+SERVER_PORT=5000
+
+JWT_SECRET=a1f5c9d7e2b489c09fa23e6fdd2e709bd52e2dd983b981302e27cb70d0e3b241
+AWS_CLOUDFRONT_URL = xxxxxxx
+EC2_INSTANCE_SERVER_IP =
+
+AWS_REGION = us-east-1
+s3PictureLocation=hinkilnln
+s3Logs=jubunimki2u

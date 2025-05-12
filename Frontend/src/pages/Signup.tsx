@@ -53,24 +53,37 @@ const Signup = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <div className="flex-grow py-8">
-        <div className="max-w-md mx-auto px-4">
-          <div className="bg-white rounded-lg shadow-sm p-8">
-            <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold">Create your account</h1>
-              <p className="text-gray-600 mt-2">Join Estate-Ease today</p>
+      <div className="flex-grow flex flex-col md:flex-row">
+        {/* Form side */}
+        <div className="w-full md:w-1/2 py-8 px-4 flex items-center">
+          <div className="max-w-md mx-auto w-full">
+            <div className="bg-white rounded-lg shadow-sm p-8">
+              <div className="text-center mb-8">
+                <h1 className="text-2xl font-bold">Create your account</h1>
+                <p className="text-gray-600 mt-2">Join Estate-Ease today</p>
+              </div>
+              
+              <SignupForm />
+              
+              <div className="mt-6 text-center">
+                <p className="text-sm text-gray-600">
+                  Already have an account?{" "}
+                  <Link to="/login" className="text-estate-600 hover:text-estate-700 font-medium">
+                    Log in
+                  </Link>
+                </p>
+              </div>
             </div>
-            
-            <SignupForm />
-            
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
-                Already have an account?{" "}
-                <Link to="/login" className="text-estate-600 hover:text-estate-700 font-medium">
-                  Log in
-                </Link>
-              </p>
-            </div>
+          </div>
+        </div>
+        
+        {/* Image side */}
+        <div 
+          className="hidden md:block md:w-1/2 bg-cover bg-center"
+          style={{ backgroundImage: 'url("http://group55-s3bucket.s3-website-us-east-1.amazonaws.com/curve.jpeg")' }}
+        >
+          <div className="h-full w-full bg-black bg-opacity-20 flex items-end p-8">
+            <h2 className="text-white text-2xl font-bold">Start your journey to finding the perfect property</h2>
           </div>
         </div>
       </div>

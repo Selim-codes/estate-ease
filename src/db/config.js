@@ -30,7 +30,7 @@ if (process.env.ENV === 'development') {
         process.env.RDS_PASSWORD,
         {
             host: process.env.RDS_HOST,
-            port: parseInt(process.env.RDS_PORT || '5432', 10),
+            port: parseInt(process.env.RDS_PORT || '3306', 10),
             dialect: 'postgres',
             logging: false,
         }

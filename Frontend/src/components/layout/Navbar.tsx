@@ -29,15 +29,18 @@ export const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await api.logout();
-      setUser(null);
-      toast.success("You have been logged out");
-      navigate("/");
+        console.log("Attempting to log out...");
+        await api.logout();
+        console.log("Logout successful");
+        localStorage.removeItem("token"); // Clear the token from local storage
+        setUser(null); // Clear the user state
+        toast.success("You have been logged out");
+        navigate("/login"); // Redirect to the login page
     } catch (error) {
-      console.error("Error during logout:", error);
-      toast.error("Failed to log out");
+        console.error("Error during logout:", error);
+        toast.error("Failed to log out");
     }
-  };
+};
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
