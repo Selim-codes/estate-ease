@@ -28,10 +28,11 @@ if (process.env.ENV === 'development') {
         process.env.RDS_NAME,
         process.env.RDS_USER,
         process.env.RDS_PASSWORD,
+        process.env.RDS_HOST,
         {
             host: process.env.RDS_HOST,
             port: parseInt(process.env.RDS_PORT || '3306', 10),
-            dialect: 'postgres',
+            dialect: 'mysql',
             logging: false,
         }
     );
