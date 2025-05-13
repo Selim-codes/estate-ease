@@ -8,7 +8,7 @@ import {
 } from "@/types";
 import { toast } from "sonner";
 
-const API_BASE_URL = "http://group55elb-590010270.us-east-1.elb.amazonaws.com/api"; // Backend base URL
+const API_BASE_URL = "http://group55elb-590010270.us-east-1.elb.amazonaws.com"; // Backend base URL
 console.log(API_BASE_URL)
 
 // Utility function to handle API requests
