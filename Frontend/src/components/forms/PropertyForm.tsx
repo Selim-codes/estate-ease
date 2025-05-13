@@ -56,55 +56,55 @@ export const PropertyForm = ({ property, onSave }: PropertyFormProps) => {
       });
     }
   }, [property]);
-  
+
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
     let isValid = true;
-    
-    if (!formData.title.trim()) {
+
+    if (!(formData.title || '').trim()) {
       newErrors.title = "Title is required";
       isValid = false;
     }
-    
-    if (!formData.address.trim()) {
+
+    if (!(formData.address || '').trim()) {
       newErrors.address = "Address is required";
       isValid = false;
     }
-    
-    if (!formData.zipCode.trim()) {
+
+    if (!(formData.zipCode || '').trim()) {
       newErrors.zipCode = "Zip/Postal code is required";
       isValid = false;
     }
-    
-    if (formData.price <= 0) {
+
+    if (formData.price == null || formData.price <= 0) {
       newErrors.price = "Price must be greater than 0";
       isValid = false;
     }
-    
-    if (formData.bedrooms < 0) {
+
+    if (formData.bedrooms == null || formData.bedrooms < 0) {
       newErrors.bedrooms = "Bedrooms cannot be negative";
       isValid = false;
     }
-    
-    if (formData.bathrooms < 0) {
+
+    if (formData.bathrooms == null || formData.bathrooms < 0) {
       newErrors.bathrooms = "Bathrooms cannot be negative";
       isValid = false;
     }
-    
-    if (formData.squareFeet <= 0) {
+
+    if (formData.squareFeet == null || formData.squareFeet <= 0) {
       newErrors.squareFeet = "Square feet must be greater than 0";
       isValid = false;
     }
-    
-    if (!formData.imageUrl.trim()) {
+
+    if (!(formData.imageUrl || '').trim()) {
       newErrors.imageUrl = "Image URL is required";
       isValid = false;
     }
-    
+
     setErrors(newErrors);
     return isValid;
   };
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
     let parsedValue: string | number = value;
