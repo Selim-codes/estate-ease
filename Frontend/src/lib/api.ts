@@ -119,14 +119,14 @@ export const api = {
     id: string,
     data: Partial<PropertyFormData>
   ): Promise<Property> {
-    return request<Property>(`/api/properties/${id}`, {
+    return request<Property>(`/api/properties/update-properties/${id}`, {
       method: "PUT",
       body: JSON.stringify(data),
     });
   },
 
   async deleteProperty(id: string): Promise<void> {
-    return request<void>(`/api/properties/${id}`, {
+    return request<void>(`/api/properties/delete-properties/${id}`, {
       method: "DELETE",
     });
   },
