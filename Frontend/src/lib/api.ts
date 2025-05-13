@@ -8,7 +8,7 @@ import {
 } from "@/types";
 import { toast } from "sonner";
 
-const API_BASE_URL = "http://localhost:3000/api"; // Backend base URL
+const API_BASE_URL = process.env.ALLOWED_BASEURL; // Backend base URL
 
 // Utility function to handle API requests
 const request = async <T>(
