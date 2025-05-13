@@ -41,7 +41,7 @@ export const api = {
   // Auth endpoints
   async login(credentials: LoginCredentials): Promise<User> {
     const response = await request<{ token: string; user: User }>(
-      "/auth/login",
+      "/api/auth/login",
       {
         method: "POST",
         body: JSON.stringify(credentials),
@@ -55,7 +55,7 @@ export const api = {
   },
 
   async signup(data: SignupData): Promise<User> {
-    return request<User>("/auth/register", {
+    return request<User>("/api/auth/register", {
       method: "POST",
       body: JSON.stringify(data),
     });
