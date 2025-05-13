@@ -23,6 +23,11 @@ app.use(
     })
 );
 
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.originalUrl}`);
+  next();
+});
+
 app.use(helmet()); // Add security headers
 app.use(morgan("dev"));
 app.use(express.json());

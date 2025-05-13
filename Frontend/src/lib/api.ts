@@ -62,13 +62,13 @@ export const api = {
   },
 
   async logout(): Promise<void> {
-    return request<void>("/auth/logout", {
+    return request<void>("/api/auth/logout", {
       method: "POST",
     });
   },
 
   async getCurrentUser(): Promise<User | null> {
-    return request<User | null>("/auth/me", {
+    return request<User | null>("/api/auth/me", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`, // Include the token
       },
@@ -94,19 +94,19 @@ export const api = {
       if (filters.agent) queryParams.append("agent", filters.agent);
     }
 
-    return request<Property[]>(`/properties?${queryParams.toString()}`);
+    return request<Property[]>(`/api/properties?${queryParams.toString()}`);
   },
 
   async getProperty(id: string): Promise<Property> {
-    return request<Property>(`/properties/${id}`);
+    return request<Property>(`/api/properties/${id}`);
   },
 
   async getMyProperties(): Promise<Property[]> {
-    return request<Property[]>("/properties/my");
+    return request<Property[]>("/api/properties/my");
   },
 
   async createProperty(data: PropertyFormData): Promise<Property> {
-    return request<Property>("/properties", {
+    return request<Property>("/api/properties", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -119,14 +119,14 @@ export const api = {
     id: string,
     data: Partial<PropertyFormData>
   ): Promise<Property> {
-    return request<Property>(`/properties/${id}`, {
+    return request<Property>(`/api/properties/${id}`, {
       method: "PUT",
       body: JSON.stringify(data),
     });
   },
 
   async deleteProperty(id: string): Promise<void> {
-    return request<void>(`/properties/${id}`, {
+    return request<void>(`/api/properties/${id}`, {
       method: "DELETE",
     });
   },
