@@ -7,6 +7,7 @@ services:
       - "5000:5000"
     depends_on:
       - frontend
+    restart : always
 
   frontend:
     container_name: estate-app-frontend
